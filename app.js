@@ -20,52 +20,47 @@ greet();
 let balance = 0;
 
 const operations = {
-  check: () => window.alert(`Saldo atual: R$ ${balance}`),
-  deposit: () => {
-    const value = Number(window.prompt('Valor do depósito:'));
+  check: () => window.alert(`Saldo atual: R$${balance}`),
+  deposit: () => {const value = Number(window.prompt('Valor do depósito?'));
+  balance += value;
 
-    balance += value;
+  window.alert(`Saldo atual: R$${balance}`);},
 
-    window.alert(`Saldo atual: R$ ${balance}`);
-  },
-  cashout: () => {
-    const value = Number(window.prompt('Valor do saque:'));
+  cashout: () => {const value = Number(window.prompt('Valor do saque?'));
+  balance -= value;
 
-    balance -= value;
+  window.alert(`Saldo atual: R$${balance}`);},
 
-    window.alert(`Saldo atual: R$ ${balance}`);
-  },
-  exit: () => {
-    window.alert('Foi um prazer atendê-lo.');
-    repeat = false;
-  },
+  exit: () => {window.alert('Foi um prazer atendê-lo!');
+  repeat = false;},
+
   invalid: () => window.alert('Número inválido.')
 }
 
-while (repeat) {
-  const operation = window.prompt(`
-    Escolha uma operação:
-  
-    1 - Consultar
-    2 - Depositar
-    3 - Sacar
-    4 - Sair
-  `);
+while(repeat){
+const operation = window.prompt(`
+ Escolha uma operação:
+ 
+ 1- Consultar
+ 2- Depositar
+ 3- Sacar
+ 4- Sair
+`);
 
-  if (operation === null) {
-    window.alert('Operaçao cancelada.');
-    repeat = false;
-  } else if (operation === '') {
-    window.alert('Digite um número válido.');
-  } else if (isNaN(operation)) {
-    window.alert('Digite um número válido.');
-  } else {
-  switch (Number(operation)) {
-    case 1: operations.check(); break;
-    case 2: operations.deposit(); break;
-    case 3: operations.cashout(); break;
-    case 4: operations.exit(); break;
-    default: operations.invalid();
+if (operation === null) {
+  window.alert('Operação cancelada.');
+  repeat = false;
+} else if (operation === '') {
+ window.alert('Digite um número.')
+} else if (isNaN(operation)) {
+  window.alert('Digite um número válido.');
+} else{
+switch (Number(operation)) {
+  case 1: operations.check();break;
+  case 2: operations.deposit();break;
+  case 3: operations.cashout();break;
+  case 4: operations.exit();break;
+  default: operations.invalid();
   }
 }
 }
